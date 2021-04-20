@@ -40,9 +40,10 @@ class CardRepository:
         '''
         self.__load_from_file()
         if card.id in self.__storage:
-            raise KeyError('The card id already exists')
-        if card.cnp in self.__storage:
-            raise KeyError("The card's cnp already exists")
+            raise DuplicateIDError('The card id already exists')
+        for cards in self.__storage.values():
+            if card.cnp == cards.cnp:
+                raise DuplicateCNPError("The card's cnp already exists")
         self.__storage[card.id] = card
         self.__save_to_file()
 
@@ -68,7 +69,7 @@ class CardRepository:
         '''
         self.__load_from_file()
         if card.id not in self.__storage:
-            raise KeyError('There is no card with that id')
+            raise NoIDError('There is no card with that id')
         self.__storage[card.id] = card
         self.__save_to_file()
 
@@ -81,10 +82,28 @@ class CardRepository:
         '''
         self.__load_from_file()
         if card_id not in self.__storage:
-            raise KeyError('There is no card with that id')
+            raise NoIDError('There is no card with that id')
         del self.__storage[card_id]
         self.__save_to_file()
 
+    def clear(self):
+        '''
+        Clears the storage
+        :return:
+        '''
+        self.__storage = {}
+
+
+class DuplicateIDError(Exception):
+    pass
+
+
+class NoIDError(Exception):
+    pass
+
+
+class DuplicateCNPError(Exception):
+    pass
 
 def test_cardRepo():
     pass

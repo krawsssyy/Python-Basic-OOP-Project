@@ -23,7 +23,7 @@ class Card:
 
     def __str__(self):
         # This function is used to print a card with a stable format
-        return "'id' : {}, 'Last Name' : {}, 'First Name' : {}, 'CNP' : {}, 'Date of Birth' : {}, " \
+        return "'ID' : {}, 'Last Name' : {}, 'First Name' : {}, 'CNP' : {}, 'Date of Birth' : {}, " \
                "'Date of Sign-up' : {}, 'Points' :{}".\
             format(self.__id, self.__surname, self.__name, self.__cnp, self.__date, self.__signup, self.__points)
 

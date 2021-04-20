@@ -83,6 +83,21 @@ class FilmRepository:
         del self.__storage[film_id]
         self.__save_to_file()
 
+    def clear(self):
+        '''
+        Clears the storage
+        :return:
+        '''
+        self.__storage = {}
+
+
+class DuplicateIDError(Exception):
+    pass
+
+
+class NoIDError(Exception):
+    pass
+
 
 def test_filmRepo():
     pass

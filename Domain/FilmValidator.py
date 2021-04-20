@@ -6,6 +6,11 @@ class FilmValidator:
     '''
     @staticmethod
     def representsInt(value):
+        '''
+        Tests if a value can be safely converted to an integer
+        :param value: - int - to be tested
+        :return: True or False whether the initial condition is satisfied
+        '''
         try:
             int(value)
             return True
@@ -14,6 +19,11 @@ class FilmValidator:
 
     @staticmethod
     def representsFloat(value):
+        '''
+        Tests if a value can be safely converted to a float
+        :param value: - float - to be tested
+        :return: True or False whether the initial condition is satisfied
+        '''
         try:
             float(value)
             return True

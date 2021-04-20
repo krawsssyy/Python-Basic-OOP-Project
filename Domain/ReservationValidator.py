@@ -7,6 +7,11 @@ class ReservationValidator:
     '''
     @staticmethod
     def representsInt(value):
+        '''
+        Tests if a value can be safely converted to an integer
+        :param value: - int - to be tested
+        :return: True or False whether the initial condition is satisfied
+        '''
         try:
             int(value)
             return True
@@ -15,16 +20,31 @@ class ReservationValidator:
 
     @staticmethod
     def getDay(date):
+        '''
+        Gets the day of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the day of that date
+        '''
         aux = date.split(".")
         return aux[0]
 
     @staticmethod
     def getMonth(date):
+        '''
+        Gets the month of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the month of that date
+        '''
         aux = date.split(".")
         return aux[1]
 
     @staticmethod
     def getYear(date):
+        '''
+        Gets the year of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the year of that date
+        '''
         aux = date.split(".")
         return aux[2]
 
@@ -46,7 +66,7 @@ class ReservationValidator:
                 self.representsInt(self.getYear(res.res_date)):
             if int(self.getDay(res.res_date)) < 1 or int(self.getMonth(res.res_date)) < 1 or int(self.getYear(res.res_date)) < 1:
                 raise ValueError("Data a rezervarii invalida")
-            if int(self.getDay(res.res_datee)) > 31 or int(self.getMonth(res.res_date)) > 12 or \
+            if int(self.getDay(res.res_date)) > 31 or int(self.getMonth(res.res_date)) > 12 or \
                     int(self.getYear(res.res_date)) > datetime.datetime.now().year:
                 raise ValueError("Data a rezervarii invalida")
         else:

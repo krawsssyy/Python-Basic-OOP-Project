@@ -8,6 +8,11 @@ class CardValidator:
     '''
     @staticmethod
     def representsInt(value):
+        '''
+        Tests if a value can be safely converted to an integer
+        :param value: - int - to be tested
+        :return: True or False whether the initial condition is satisfied
+        '''
         try:
             int(value)
             return True
@@ -16,6 +21,11 @@ class CardValidator:
 
     @staticmethod
     def representsFloat(value):
+        '''
+        Tests if a value can be safely converted to a float
+        :param value: - float - to be tested
+        :return: True or False whether the initial condition is satisfied
+        '''
         try:
             float(value)
             return True
@@ -24,16 +34,31 @@ class CardValidator:
 
     @staticmethod
     def getDay(date):
+        '''
+        Gets the day of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the day of that date
+        '''
         aux = date.split(".")
         return aux[0]
 
     @staticmethod
     def getMonth(date):
+        '''
+        Gets the month of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the month of that date
+        '''
         aux = date.split(".")
         return aux[1]
 
     @staticmethod
     def getYear(date):
+        '''
+        Gets the year of a given date in the format dd.mm.yyyy
+        :param date: - string - the date
+        :return: - string - the year of that date
+        '''
         aux = date.split(".")
         return aux[2]
 
@@ -66,7 +91,7 @@ class CardValidator:
                 raise ValueError("Data a inregistrariii invalida")
         else:
             raise ValueError("Data a inregistrariii invalida")
-        if not self.getYear(card.date) <= self.getYear(card.signup) + 14:
+        if not int(self.getYear(card.date)) <= int(self.getYear(card.signup)) + 14:
             raise ValueError("Nu va puteti inregistra pana la varsta de 14 ani")
         if not self.representsInt(card.points):
             raise ValueError("Punctele acumulate trebuie sa fie un numar intreg")

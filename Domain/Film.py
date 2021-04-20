@@ -19,7 +19,7 @@ class Film:
 
     def __str__(self):
         # This method is used to print films with a stable format
-        return "'ID' : {}, 'Title' : {}, 'Year' : {}, 'price' : {}, 'in schedule' : {}".\
+        return "'ID' : {}, 'Title' : {}, 'Year' : {}, 'Price' : {}, 'In schedule?' : {}".\
             format(self.__id, self.__title, self.__year, self.__price, self.__played)
 
     def __eq__(self, other):
